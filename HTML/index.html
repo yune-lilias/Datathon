@@ -15,34 +15,126 @@
             }
             p.username {
                 font-weight: bold;
-
             }
+            .mytxt {
+    color:#333;
+    line-height:normal;
+    font-family:"Microsoft YaHei",Tahoma,Verdana,SimSun;
+    font-style:normal;
+    font-variant:normal;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-weight:normal;
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    padding-top:4px;
+    padding-right:4px;
+    padding-bottom:4px;
+    padding-left:4px;
+    font-size:15px;
+    outline-width:medium;
+    outline-style:none;
+    outline-color:invert;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    text-shadow:0px 1px 2px #fff;
+    background-attachment:scroll;
+    background-repeat:repeat-x;
+    background-position-x:left;
+    background-position-y:top;
+    background-size:auto;
+    background-origin:padding-box;
+    background-clip:border-box;
+    background-color:rgb(255,255,255);
+    margin-right:8px;
+    border-top-color:#ccc;
+    border-right-color:#ccc;
+    border-bottom-color:#ccc;
+    border-left-color:#ccc;
+    border-top-width:2px;
+    border-right-width:2px;
+    border-bottom-width:2px;
+    border-left-width:2px;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+}
+.mytxt2 {
+    color:#333;
+    line-height:normal;
+    font-family:"Microsoft YaHei",Tahoma,Verdana,SimSun;
+    font-style:normal;
+    font-variant:normal;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-weight:normal;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:10px;
+    padding-top:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    font-size:15px;
+    outline-width:medium;
+    outline-style:none;
+    outline-color:invert;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    text-shadow:0px 1px 2px #fff;
+    background-attachment:scroll;
+    background-repeat:repeat-x;
+    background-position-x:left;
+    background-position-y:top;
+    background-size:auto;
+    background-origin:padding-box;
+    background-clip:border-box;
+    background-color:rgb(255,255,255);
+    margin-right:8px;
+    border-top-color:#ccc;
+    border-right-color:#ccc;
+    border-bottom-color:#ccc;
+    border-left-color:#ccc;
+    border-top-width:2px;
+    border-right-width:2px;
+    border-bottom-width:2px;
+    border-left-width:2px;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+}
         </style>
     </head>
     <body style="background-color:hsl(196, 50%, 64%);">
-        <img src="images/logo.jpg" alt="logo" />
-        <p class="username">Link Recommendation</p>
-        <p>We try to make a Link recommendation based on history data of pages’ features and edges<br> 
-            with the Doc2Vec enbedding and Model of Graph Convolutional and Graph Attention Networks.</p>
+        &nbsp &nbsp &nbsp &nbsp &nbsp<img src="images/logo.jpg" alt="logo" />
+        <p class="username"> &nbsp &nbsp &nbsp &nbsp &nbsp Link Recommendation</p>
+        <p>&nbsp &nbsp &nbsp  &nbsp We try to make a Link recommendation based on history data of pages’ features and edges<br> 
+            &nbsp &nbsp &nbsp &nbsp &nbspwith the Doc2Vec enbedding and Model of Graph Convolutional and Graph Attention Networks.</p>
         <br><br>
 
+        &nbsp &nbsp &nbsp &nbsp Page 1: <input type="text" name="page1" class="mytxt" />
+        &nbsp Page 2: <input type="text" name="page2" class="mytxt" />
+        &nbsp Related Number <input type="text" name="number" class="mytxt" /><br><br><br>
 
-        Page 1: <input type="text" name="page1" maxlength="5" />
-        Page 2: <input type="text" name="page2" maxlength="5" />
-        Related Number <input type="text" name="number" maxlength="5" /><br>
-
-        <input type="submit" value="Search" maxlength="5" />
-        <input type="submit" value="Cancel" maxlength="5" /><br>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<input type="submit" value="Search" class="mytxt" /> &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp
+        <input type="submit" value="Cancel" class="mytxt" /><br>
         <br>
         <br>
 
-        Whethr Link Exists? <br>
-        <input id="input_template" name="name" maxlength="7" type="text" style="width: 120px;"><br>
-        Top K Link Recommendation for Page 1:<br>
-        <input id="input_template" name="name" maxlength="20" type="text" style="width: 120px;"><br>
-        Top K Link Recommendation for Page 2:<br>
-        <input id="input_template" name="name" maxlength="20" type="text" style="width: 120px;"><br><br><br><br><br>
+        &nbsp &nbsp &nbsp Whethr Link Exists? <br>
+        &nbsp &nbsp &nbsp <input id="input_template" name="name" maxlength="7" type="text" style="width: 120px;" class="mytxt2"><br>
+        &nbsp &nbsp &nbsp Top K Link Recommendation for Page 1:<br>
+        &nbsp  &nbsp &nbsp <input id="input_template" name="name" maxlength="20" type="text" style="width: 120px;" class="mytxt2"><br>
+        &nbsp &nbsp &nbsp Top K Link Recommendation for Page 2:<br>
+        &nbsp  &nbsp &nbsp <input id="input_template" name="name" maxlength="20" type="text" style="width: 120px;" class="mytxt2"><br><br><br><br><br>
         
-        <a href="https://github.com/yune-lilias/Datathon.git">More resource on Github </a>
+        &nbsp  &nbsp &nbsp <a href="https://github.com/yune-lilias/Datathon.git">More resource on Github </a>
     </body>
 </html>
