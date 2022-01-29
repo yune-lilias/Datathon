@@ -14,7 +14,7 @@ class Ui_Frame(object):
         Frame.resize(720, 640)
         Frame.setMaximumSize(QtCore.QSize(1280, 1280))
         self.label = QtWidgets.QLabel(Frame)
-        self.label.setGeometry(QtCore.QRect(220, 30, 281, 51))
+        self.label.setGeometry(QtCore.QRect(180, 30, 381, 51))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Frame)
         self.label_2.setGeometry(QtCore.QRect(110, 120, 111, 41))
@@ -91,6 +91,12 @@ class Ui_Frame(object):
         self.label_8.setPixmap(QtGui.QPixmap(":/background.png"))
         self.label_8.setScaledContents(True)
         self.label_8.setObjectName("label_8")
+        self.label_9 = QtWidgets.QLabel(Frame)
+        self.label_9.setGeometry(QtCore.QRect(70, 10, 81, 91))
+        self.label_9.setText("")
+        self.label_9.setPixmap(QtGui.QPixmap(":/logo.jpg"))
+        self.label_9.setScaledContents(True)
+        self.label_9.setObjectName("label_9")
         self.label_8.raise_()
         self.label.raise_()
         self.label_2.raise_()
@@ -107,6 +113,7 @@ class Ui_Frame(object):
         self.Search.raise_()
         self.Cancel.raise_()
         self.Page1.raise_()
+        self.label_9.raise_()
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -118,7 +125,7 @@ class Ui_Frame(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'SimSun\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt; font-weight:600;\">Link Recongnizer</span></p></body></html>"))
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt; font-weight:600;\">Link &amp; Recommendation</span></p></body></html>"))
         self.label_2.setText(_translate("Frame", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Page1</span></p></body></html>"))
         self.label_3.setText(_translate("Frame", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Page2</span></p></body></html>"))
         self.label_4.setText(_translate("Frame", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Related Number</span></p></body></html>"))
@@ -135,6 +142,8 @@ class Ui_Frame(object):
         self.Page1.setWhatsThis(_translate("Frame", "<html><head/><body><p><br/></p></body></html>"))
 
 import background_rc
+import logo_rc
+
 
 
 
