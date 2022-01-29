@@ -9,7 +9,7 @@ from nltk.tokenize import word_tokenize
 
 
 def readdata():
-    with open("bill_challenge_datasets/Training/node_features_text.json") as jf:
+    with open("./datasets/Training/node_features_text.json") as jf:
         data = json.load(jf)
 
     input = [None] * len(data)
@@ -23,7 +23,7 @@ def readdata():
 
 
 
-   # tagged_data = [TaggedDocument(d, [i]) for i, d in enumerate(input)]
+    tagged_data = [TaggedDocument(d, [i]) for i, d in enumerate(input)]
 
     ## Train doc2vec model
     model = Doc2Vec(tagged_data, vector_size=50, window=2, min_count=1, workers=4, epochs=100)

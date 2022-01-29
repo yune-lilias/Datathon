@@ -4,34 +4,50 @@ from torch.nn import Sequential, Linear, ReLU
 from torch_geometric.nn import MessagePassing
 from torch import Tensor
 from torch_geometric.nn import GCNConv
+from torch_geometric.nn import BatchNorm
+from torch_geometric.nn import max_pool
 from torch_geometric.data import Data
 import pandas as pd
+import numpy as np
 from gensim.models.doc2vec import Doc2Vec
 from sklearn.metrics import roc_auc_score
 from torch_geometric.utils import negative_sampling
 from torch_geometric.utils import train_test_split_edges
 import torch.nn.functional as F
 
-def inputdata():
-    model = Doc2Vec.load("test_doc2vec.model")
-    #print(model.docvecs[0])
-    edge_index0 = pd.read_csv("bill_challenge_datasets/Training/training_graph.csv")
-    edge_index0 = edge_index0.values.tolist()
-    edge_index = torch.tensor(edge_index0, dtype=torch.long)
-    xtmp = [model.docvecs[k].tolist() for k in range(len(model.docvecs))]
-    x = torch.tensor(xtmp)
-    data = Data(x=x, edge_index=edge_index.t().contiguous())
-    bp = 0
-    return data
+doc2vec_model = Doc2Vec.load("test_doc2vec.model")
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-data = inputdata()
-data = train_test_split_edges(data)
+word_feature_array = []
+
+for i in range(len(doc2vec_model.docvecs)):
+    word_feature_array.append(doc2vec_model.docvecs[i])
+
+word_feature_array = np.array(word_feature_array)
+
+node_type = pd.read_csv("./datasets/Training/node_classification.csv")
+node_type_onehot = np.zeros([len(node_type), 4])
+for i in range(len(node_type)):
+    node_type_onehot[i][node_type.iloc[i][1]-1] = 1
+
+all_feature_array = np.concatenate((word_feature_array, node_type_onehot), axis=1)
+
+edge = pd.read_csv("./datasets/Training/training_graph.csv")
+edge = edge.to_numpy().T
+
+all_data = Data(x=torch.tensor(all_feature_array, dtype=torch.float32),
+    edge_index=torch.tensor(edge, dtype=torch.long), edge_attr=None)
+
+all_data.num_nodes = len(all_feature_array)
+all_data.num_features = len(all_feature_array[0])
+
+data = train_test_split_edges(all_data)
+
 
 class Net(torch.nn.Module):
     def __init__(self):
         super(Net, self).__init__()
         self.conv1 = GCNConv(data.num_features, 128)
+        self.nl = BatchNorm(128)
         self.conv2 = GCNConv(128, 64)
 
     def encode(self):
@@ -48,36 +64,44 @@ class Net(torch.nn.Module):
         prob_adj = z @ z.t()
         return (prob_adj > 0).nonzero(as_tuple=False).t()
 
-    def edgepred(self,z,te):
+    def edgepred(self, z, te):
         prob_adj = z @ z.t()
         for k in range(len(te)):
-            te[k].append(prob_adj[te[k][0]][te[k][1]])
+            probability = prob_adj[te[k][0]][te[k][1]]
+            probability = probability.detach().numpy()
+            te[k].append(probability)
+
         return te
 
+    def pred_one_edge(self, z, new_node, top_k=5, remove_negative=True):
+        prob_adj = z @ z.t()
+        rank_list = np.zeros(data.num_nodes)
+        for k in range(data.num_nodes):
+            if k == new_node:
+                rank_list[k] = -np.inf
+            else:
+                probability = prob_adj[new_node][k]
+                probability = probability.detach().numpy()
+                rank_list[k] = probability
 
+        index_list = rank_list.argsort()
+        top_k_index = index_list[-1:-top_k - 2:-1]
+        top_k_score = rank_list[top_k_index]
 
-model, data =  Net().to(device), data.to(device)
+        if remove_negative:
+            for neg_point, inde in enumerate(top_k_score):
+                if inde < 0:
+                    break
+            top_k_index = top_k_index[:neg_point]
+            top_k_score = top_k_score[:neg_point]
+
+        return top_k_index, top_k_score
+
+# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = 'cpu'
+model, data = Net().to(device), data.to(device)
+model = model.float()
 optimizer = torch.optim.Adam(params=model.parameters(), lr=0.01)
-
-class GCN(torch.nn.Module):
-    def __init__(self, in_channels, hidden_channels, out_channels):
-        super().__init__()
-        self.conv1 = GCNConv(in_channels, hidden_channels)
-        self.conv2 = GCNConv(hidden_channels, out_channels)
-
-    def forward(self, x: Tensor, edge_index: Tensor) -> Tensor:
-        # x: Node feature matrix of shape [num_nodes, in_channels]
-        # edge_index: Graph connectivity matrix of shape [2, num_edges]
-        x = self.conv1(x, edge_index).relu()
-        x = self.conv2(x, edge_index)
-        return x
-
-
-
-
-
-
-
 
 
 def get_link_labels(pos_edge_index, neg_edge_index):
@@ -118,9 +142,8 @@ def test():
         perfs.append(roc_auc_score(link_labels.cpu(), link_probs.cpu()))
     return perfs
 
-
 best_val_perf = test_perf = 0
-for epoch in range(1, 11):
+for epoch in range(1, 30):
     train_loss = train()
     val_perf, tmp_test_perf = test()
     if val_perf > best_val_perf:
@@ -128,11 +151,19 @@ for epoch in range(1, 11):
         test_perf = tmp_test_perf
     log = 'Epoch: {:03d}, Loss: {:.4f}, Val: {:.4f}, Test: {:.4f}'
     print(log.format(epoch, train_loss, best_val_perf, test_perf))
-
 z = model.encode()
 
-te = pd.read_csv("bill_challenge_datasets/Test Dataset/test_edges.csv")
-te = te.values.tolist()
-final_te = model.edgepred(z,te)
-kk = 0
+test_data = pd.read_csv("datasets/Test Dataset/test_edges.csv")
+test_data = test_data.values.tolist()
+test_data_nodes_score = model.edgepred(z, test_data)
 
+test_data_score = [float(test_data_nodes_score[i][2]) for i in range(len(test_data))]
+print(test_data_score[:5])
+
+test_prediction = [1 if score >0 else 0 for score in test_data_score]
+print(test_prediction[:5])
+
+recommend_node, node_score = model.pred_one_edge(z, 1, top_k = 4)
+print(recommend_node)
+
+print(node_score)
