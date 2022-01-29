@@ -47,6 +47,7 @@ class Ui_Frame(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.Result.setFont(font)
+        self.Result.setAlignment(QtCore.Qt.AlignCenter)
         self.Result.setObjectName("Result")
         self.label_6 = QtWidgets.QLabel(Frame)
         self.label_6.setGeometry(QtCore.QRect(60, 380, 91, 31))
@@ -85,15 +86,12 @@ class Ui_Frame(object):
         self.Page1.setFont(font)
         self.Page1.setObjectName("Page1")
         self.label_8 = QtWidgets.QLabel(Frame)
-        self.label_8.setGeometry(QtCore.QRect(130, 20, 71, 61))
+        self.label_8.setGeometry(QtCore.QRect(-10, -10, 731, 661))
         self.label_8.setText("")
         self.label_8.setPixmap(QtGui.QPixmap(":/sign.jpg"))
         self.label_8.setScaledContents(True)
         self.label_8.setObjectName("label_8")
-        self.listView = QtWidgets.QListView(Frame)
-        self.listView.setGeometry(QtCore.QRect(-5, -9, 751, 651))
-        self.listView.setObjectName("listView")
-        self.listView.raise_()
+        self.label_8.raise_()
         self.label.raise_()
         self.label_2.raise_()
         self.label_3.raise_()
@@ -109,7 +107,6 @@ class Ui_Frame(object):
         self.Search.raise_()
         self.Cancel.raise_()
         self.Page1.raise_()
-        self.label_8.raise_()
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -138,5 +135,6 @@ class Ui_Frame(object):
         self.Page1.setWhatsThis(_translate("Frame", "<html><head/><body><p><br/></p></body></html>"))
 
 import sign_rc
+
 
 
