@@ -22,7 +22,7 @@ Given part of a undirected graph with node & edge information, on one hand the g
 3. Normal cnn/rnn works well if we just train on node features, but it fails to make use of edges information. For this reason we use graph neural network in (py)torch-geometry. Our neural network consists two parts: one "encoder" to embed nodes, and one "decoder" to calculate "scores" between each pair of nodes. In encoder, we use two different GNN network: one graph attention network and one graph convolution network, connected by a tanh activation layer.
 4. After reading testing node pair, our program will search the corresponding scores from score matrix, and let positive score to be "likely to have a edge" while negative score means the opposite.
 5. To make it easier to use, we also build a GUI with edge prediction and node recommendation (print k nodes with highest score) based on user input node numbers and integer k, and some of necessary data is stored locally upon the first used.
-6. We also tried the HTML web site to make the interface more comfortable, but still need improvement in the future.
+6. We also tried the HTML web site to make the interface with another style which we can make improvement in the future.
 
 ## Challenges we ran into
 1. It's hard for us to build a gnn, which all of us have nearly no experience and knowledge about it.
@@ -42,10 +42,10 @@ Given part of a undirected graph with node & edge information, on one hand the g
 3. Train multiply model, use mean of all models prediction results to be our output rather than single prediction.
 
 ## Built With
-numpy & matplotlib: based vector calculation and plot function
-Qtdesigner: build GUI
-Prettier : build HTML
-gensim : build doc2vec model to vectorize nodes
-pandas : load csv to our program
-pytorch-geometry : gnn related functions
-ohter tools: jypyter, pycharm, VS Code
+- numpy & matplotlib: based vector calculation and plot function
+- Qtdesigner: build GUI
+- Prettier : build HTML
+- gensim : build doc2vec model to vectorize nodes
+- pandas : load csv to our program
+- pytorch-geometry : gnn related functions
+- ohter tools: jypyter, pycharm, VS Code
