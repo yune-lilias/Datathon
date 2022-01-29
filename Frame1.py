@@ -21,11 +21,11 @@ class Ui_Frame(object):
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(Frame)
         self.label_3.setGeometry(QtCore.QRect(310, 120, 111, 41))
-        self.label_3.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.label_3.setStyleSheet("")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(480, 120, 201, 41))
-        self.label_4.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.label_4.setStyleSheet("")
         self.label_4.setObjectName("label_4")
         self.Page2 = QtWidgets.QLineEdit(Frame)
         self.Page2.setGeometry(QtCore.QRect(310, 160, 113, 31))
@@ -86,9 +86,9 @@ class Ui_Frame(object):
         self.Page1.setFont(font)
         self.Page1.setObjectName("Page1")
         self.label_8 = QtWidgets.QLabel(Frame)
-        self.label_8.setGeometry(QtCore.QRect(-10, -10, 731, 661))
+        self.label_8.setGeometry(QtCore.QRect(0, 0, 721, 571))
         self.label_8.setText("")
-        self.label_8.setPixmap(QtGui.QPixmap(":/sign.jpg"))
+        self.label_8.setPixmap(QtGui.QPixmap(":/background.png"))
         self.label_8.setScaledContents(True)
         self.label_8.setObjectName("label_8")
         self.label_8.raise_()
@@ -134,7 +134,9 @@ class Ui_Frame(object):
         self.Cancel.setText(_translate("Frame", "cancel"))
         self.Page1.setWhatsThis(_translate("Frame", "<html><head/><body><p><br/></p></body></html>"))
 
-import sign_rc
+import background_rc
+
+
 
 
 
