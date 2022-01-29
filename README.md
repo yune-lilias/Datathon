@@ -60,4 +60,4 @@ Given part of a undirected graph with node & edge information, on one hand the g
 - gensim : build doc2vec model to vectorize nodes
 - pandas : load csv to our program
 - pytorch-geometry : gnn related functions
-- ohter tools: jypyter, pycharm, VS Code
+- other tools: jypyter, pycharm, VS Code
