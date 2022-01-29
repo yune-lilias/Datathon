@@ -48,6 +48,13 @@ class Net(torch.nn.Module):
         prob_adj = z @ z.t()
         return (prob_adj > 0).nonzero(as_tuple=False).t()
 
+    def edgepred(self,z,te):
+        prob_adj = z @ z.t()
+        for k in range(len(te)):
+            te[k].append(prob_adj[te[k][0]][te[k][1]])
+        return te
+
+
 
 model, data =  Net().to(device), data.to(device)
 optimizer = torch.optim.Adam(params=model.parameters(), lr=0.01)
@@ -123,6 +130,9 @@ for epoch in range(1, 11):
     print(log.format(epoch, train_loss, best_val_perf, test_perf))
 
 z = model.encode()
-final_edge_index = model.decode_all(z)
 
+te = pd.read_csv("bill_challenge_datasets/Test Dataset/test_edges.csv")
+te = te.values.tolist()
+final_te = model.edgepred(z,te)
+kk = 0
 
