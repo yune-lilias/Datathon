@@ -17,28 +17,29 @@ This repository is for the project of [Rice Datathon 2022](https://rice-datathon
 Given part of a undirected graph with node & edge information, on one hand the goal of our project is to make a prediction on whether an edge (link) exists between two nodes, as the edge information is not in our training set. On the other hand, the project can find k node most likely to have a connection with the given node, which is a good simulation of a rel-world a recommendation system.
 
 ## How we built it
-- As node features are various number of different "words" (index), to make it a structured input for our model, first we vectorize the "words". To make it clear, we map each the nodes into an 200-dimension vector. This is accomplished by a Doc2Vec model, which puts two nodes closer if their features are more similar (or related).
-- We use the negative sampling method to define weights for no-exist edges. Besides, we split our train data into three set: train set, validation set and test set, to keep track of how well our model performs.
-- Normal cnn/rnn works well if we just train on node features, but it fails to make use of edges information. For this reason we use graph neural network in (py)torch-geometry. Our neural network consists two parts: one "encoder" to embed nodes, and one "decoder" to calculate "scores" between each pair of nodes. In encoder, we use two different GNN network: one graph attention network and one graph convolution network, connected by a tanh activation layer.
-- After reading testing node pair, our program will search the corresponding scores from score matrix, and let positive score to be "likely to have a edge" while negative score means the opposite.
-- To make it easier to use, we also build a gui with edge prediction and node recommendation (print k nodes with highest score) based on user input node numbers and integer k, and some of necessary data is stored locally upon the first used.
+1. As node features are various number of different "words" (index), to make it a structured input for our model, first we vectorize the "words". To make it clear, we map each the nodes into an 200-dimension vector. This is accomplished by a Doc2Vec model, which puts two nodes closer if their features are more similar (or related).
+2. We use the negative sampling method to define weights for no-exist edges. Besides, we split our train data into three set: train set, validation set and test set, to keep track of how well our model performs.
+3. Normal cnn/rnn works well if we just train on node features, but it fails to make use of edges information. For this reason we use graph neural network in (py)torch-geometry. Our neural network consists two parts: one "encoder" to embed nodes, and one "decoder" to calculate "scores" between each pair of nodes. In encoder, we use two different GNN network: one graph attention network and one graph convolution network, connected by a tanh activation layer.
+4. After reading testing node pair, our program will search the corresponding scores from score matrix, and let positive score to be "likely to have a edge" while negative score means the opposite.
+5. To make it easier to use, we also build a GUI with edge prediction and node recommendation (print k nodes with highest score) based on user input node numbers and integer k, and some of necessary data is stored locally upon the first used.
+6. We also tried the HTML web site to make the interface more comfortable, but still need improvement in the future.
 
 ## Challenges we ran into
-(1) It's hard for us to build a gnn, which all of us have nearly no experience and knowledge about it.
-(2) Running time is too high since model and score matrix is so large, make it slower to debug. Even with smaller dataset will takes quite a long time for pytorch to set up in pycharm or vscode. 
-(3) After we choose to store some variable locally, the file size is also quite large. Which make it diffult to share with teammate because they exceed github file size limitation.
-(4) Hard to find a way add regularization part to avoid overfitting
-(5) Not enough time to read essays and compared with different gnn models in pytorch
+1. It's hard for us to build a gnn, which all of us have nearly no experience and knowledge about it.
+2. Running time is too high since model and score matrix is so large, make it slower to debug. Even with smaller dataset will takes quite a long time for pytorch to set up in pycharm or vscode. 
+3. After we choose to store some variable locally, the file size is also quite large. Which make it diffult to share with teammate because they exceed github file size limitation.
+4. Hard to find a way add regularization part to avoid overfitting
+5. Not enough time to read essays and compared with different gnn models in pytorch
 
 ## Accomplishments that we're proud of
-(1)Our project can get high accuracy in validation and test(split from train) data, and we successfully finish the functionality finding k nodes have highest score with user input node number. 
-(2)We build a nice gui for our project
-(3)After the first search in gui, following search takes much less time (in 10s) 
+1. Our project can get high accuracy in validation and test(split from train) data, and we successfully finish the functionality finding k nodes have highest score with user input node number. 
+2. We build a nice gui for our project
+3. After the first search in gui, following search takes much less time (in 10s) 
 
 ## What's next for L&R
-(1) Try to deploy the project on cloud workspace, which will save the time setting up gui and load local variables
-(2) Make GUI more user-friendly
-(3) Train multiply model, use mean of all models prediction results to be our output rather than single prediction.
+1. Try to deploy the project on cloud workspace, which will save the time setting up gui and load local variables
+2. Make GUI more user-friendly
+3. Train multiply model, use mean of all models prediction results to be our output rather than single prediction.
 
 ## Built With
 numpy & matplotlib: based vector calculation and plot function
