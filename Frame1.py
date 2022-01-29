@@ -24,7 +24,7 @@ class Ui_Frame(object):
         self.label_3.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(Frame)
-        self.label_4.setGeometry(QtCore.QRect(510, 120, 141, 41))
+        self.label_4.setGeometry(QtCore.QRect(480, 120, 201, 41))
         self.label_4.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.label_4.setObjectName("label_4")
         self.Page2 = QtWidgets.QLineEdit(Frame)
@@ -43,7 +43,7 @@ class Ui_Frame(object):
         self.label_5.setGeometry(QtCore.QRect(60, 300, 301, 41))
         self.label_5.setObjectName("label_5")
         self.Result = QtWidgets.QLineEdit(Frame)
-        self.Result.setGeometry(QtCore.QRect(430, 310, 231, 31))
+        self.Result.setGeometry(QtCore.QRect(370, 310, 291, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.Result.setFont(font)
@@ -133,5 +133,6 @@ class Ui_Frame(object):
         self.Cancel.setText(_translate("Frame", "cancel"))
         self.Page1.setWhatsThis(_translate("Frame", "<html><head/><body><p><br/></p></body></html>"))
 
+import back2_rc
 
 
