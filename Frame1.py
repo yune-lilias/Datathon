@@ -133,7 +133,4 @@ class Ui_Frame(object):
         self.Cancel.setText(_translate("Frame", "cancel"))
         self.Page1.setWhatsThis(_translate("Frame", "<html><head/><body><p><br/></p></body></html>"))
 
-import back1_rc
-import back2_rc
-import back_rc
-import sign_rc
+
