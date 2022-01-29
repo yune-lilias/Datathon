@@ -2,7 +2,8 @@ from gcn import Net
 import torch
 import torch_geometric
 import pandas as pd
-
+import numpy as np
+import matplotlib.pyplot as plt
 
 def interact():
     model = Net().to(device='cpu')
@@ -23,5 +24,23 @@ def interact():
     print(recommend_node)
 
     print(node_score)
+
+    with open('trainrecord.npy','rb') as f:
+        xrecord = np.load(f)
+    with open('validrecord.npy','rb') as f:
+        vrecord = np.load(f)
+    with open('testrecord.npy','rb') as f:
+        trecord = np.load(f)
+
+    fig ,ax = plt.subplots(3,1)
+    ax[0].plot(xrecord)
+    ax[0].title.set_text("train loss")
+    ax[1].plot(vrecord)
+    ax[1].title.set_text("validate accuracy")
+    ax[2].plot(trecord)
+    ax[2].title.set_text("test accuracy")
+
+    plt.show()
+
 
 interact()

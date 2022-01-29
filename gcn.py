@@ -153,7 +153,11 @@ def main():
     optimizer = torch.optim.Adam(params=model.parameters(), lr=0.01)
     best_val_perf = test_perf = 0
     model.modelin(optimizer)
-    for epoch in range(1, 30):
+    maxstep = 3
+    xrecord = np.zeros(maxstep)
+    vrecord = np.zeros(maxstep)
+    trecord = np.zeros(maxstep)
+    for epoch in range(maxstep):
         train_loss = model.trains()
         val_perf, tmp_test_perf = model.test()
         if val_perf > best_val_perf:
@@ -161,7 +165,16 @@ def main():
             test_perf = tmp_test_perf
         log = 'Epoch: {:03d}, Loss: {:.4f}, Val: {:.4f}, Test: {:.4f}'
         print(log.format(epoch, train_loss, best_val_perf, test_perf))
+        xrecord[epoch] = train_loss
+        vrecord[epoch] = best_val_perf
+        trecord[epoch] = test_perf
 
+    with open('trainrecord.npy','wb') as f:
+        np.save(f,xrecord)
+    with open('validrecord.npy','wb') as f:
+        np.save(f,vrecord)
+    with open('testrecord.npy','wb') as f:
+        np.save(f,trecord)
     torch.save(model,"gcnmodel.model")
 
 #main()
