@@ -61,3 +61,5 @@ Given part of a undirected graph with node & edge information, on one hand the g
 - pandas : load csv to our program
 - pytorch-geometry : gnn related functions
 - other tools: jypyter, pycharm, VS Code
+
+---
