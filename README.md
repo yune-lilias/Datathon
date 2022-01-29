@@ -1,4 +1,4 @@
-# Link & Recommendation System, Rice Datathon 2022
+# Link & Recommendation, Rice Datathon 2022
 ---
 By [Tianjian Sun](https://github.com/TianjianSun), [Yuhan Yang](https://github.com/yune-lilias), [Haijiao Lu](https://github.com/LHJ98) and [Yun Sun]().
 
