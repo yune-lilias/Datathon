@@ -24,11 +24,11 @@ Given part of a undirected graph with node & edge information, on one hand the g
 - To make it easier to use, we also build a gui with edge prediction and node recommendation (print k nodes with highest score) based on user input node numbers and integer k, and some of necessary data is stored locally upon the first used.
 
 ## Challenges we ran into
-(1)It's hard for us to build a gnn, which all of us have nearly no experience and knowledge about it.
-(2)Running time is too high since model and score matrix is so large, make it slower to debug. Even with smaller dataset will takes quite a long time for pytorch to set up in pycharm or vscode. 
-(3)After we choose to store some variable locally, the file size is also quite large. Which make it diffult to share with teammate because they exceed github file size limitation.
-(4)Hard to find a way add regularization part to avoid overfitting
-(5)Not enough time to read essays and compared with different gnn models in pytorch
+(1) It's hard for us to build a gnn, which all of us have nearly no experience and knowledge about it.
+(2) Running time is too high since model and score matrix is so large, make it slower to debug. Even with smaller dataset will takes quite a long time for pytorch to set up in pycharm or vscode. 
+(3) After we choose to store some variable locally, the file size is also quite large. Which make it diffult to share with teammate because they exceed github file size limitation.
+(4) Hard to find a way add regularization part to avoid overfitting
+(5) Not enough time to read essays and compared with different gnn models in pytorch
 
 ## Accomplishments that we're proud of
 (1)Our project can get high accuracy in validation and test(split from train) data, and we successfully finish the functionality finding k nodes have highest score with user input node number. 
@@ -36,13 +36,15 @@ Given part of a undirected graph with node & edge information, on one hand the g
 (3)After the first search in gui, following search takes much less time (in 10s) 
 
 ## What's next for L&R
-(1)Try to deploy the project on cloud workspace, which will save the time setting up gui and load local variables
-(2)Make GUI more user-friendly
-(3)Train multiply model, use mean of all models prediction results to be our output rather than single prediction.
+(1) Try to deploy the project on cloud workspace, which will save the time setting up gui and load local variables
+(2) Make GUI more user-friendly
+(3) Train multiply model, use mean of all models prediction results to be our output rather than single prediction.
 
 ## Built With
 numpy & matplotlib: based vector calculation and plot function
 Qtdesigner: build GUI
-gensim: build doc2vec model to vectorize nodes
-pandas: load csv to our program
-pytorch-geometry: gnn related functions
+Prettier : build HTML
+gensim : build doc2vec model to vectorize nodes
+pandas : load csv to our program
+pytorch-geometry : gnn related functions
+ohter tools: jypyter, pycharm, VS Code
