@@ -23,15 +23,15 @@ def readdata():
 
 
 
-    tagged_data = [TaggedDocument(d, [i]) for i, d in enumerate(input)]
+   # tagged_data = [TaggedDocument(d, [i]) for i, d in enumerate(input)]
 
     ## Train doc2vec model
-   # model = Doc2Vec(tagged_data, vector_size=200, window=2, min_count=1, workers=4, epochs=100)
+    model = Doc2Vec(tagged_data, vector_size=50, window=2, min_count=1, workers=4, epochs=100)
     # Save trained doc2vec model
-   # model.save("test_doc2vec.model")
+    model.save("test_doc2vec_50.model")
 
     ## Load saved doc2vec model
-    model = Doc2Vec.load("test_doc2vec.model")
+    model = Doc2Vec.load("test_doc2vec_50.model")
     ## Print model vocabulary
     print(model.docvecs[0])
     print(model.docvecs[1])
