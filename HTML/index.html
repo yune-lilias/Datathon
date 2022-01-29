@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale=1.0"
+        <meta name="keywords" content="HTML, CSS">
+        <meta name="description" content="We try to make a Link recommendation based on history data of pages’ features and edges with the Doc2Vec enbedding and Model of Graph Convolutional and Graph Attention Networks.">
+        <title>LinkRecommendation</title>
+        <style>
+            img {
+                width:200px;
+                border-radius:20px;
+                float: up;
+                margin-right:10px;
+            }
+            p.username {
+                font-weight: bold;
+
+            }
+        </style>
+    </head>
+    <body style="background-color:hsl(196, 50%, 64%);">
+        <img src="images/logo.jpg" alt="logo" />
+        <p class="username">Link Recommendation</p>
+        <p>We try to make a Link recommendation based on history data of pages’ features and edges<br> 
+            with the Doc2Vec enbedding and Model of Graph Convolutional and Graph Attention Networks.</p>
+        <br><br>
+
+
+        Page 1: <input type="text" name="page1" maxlength="5" />
+        Page 2: <input type="text" name="page2" maxlength="5" />
+        Related Number <input type="text" name="number" maxlength="5" /><br>
+
+        <input type="submit" value="Search" maxlength="5" />
+        <input type="submit" value="Cancel" maxlength="5" /><br>
+        <br>
+        <br>
+
+        Whethr Link Exists? <br>
+        <input id="input_template" name="name" maxlength="7" type="text" style="width: 120px;"><br>
+        Top K Link Recommendation for Page 1:<br>
+        <input id="input_template" name="name" maxlength="20" type="text" style="width: 120px;"><br>
+        Top K Link Recommendation for Page 2:<br>
+        <input id="input_template" name="name" maxlength="20" type="text" style="width: 120px;"><br><br><br><br><br>
+        
+        <a href="https://github.com/yune-lilias/Datathon.git">More resource on Github </a>
+    </body>
+</html>
