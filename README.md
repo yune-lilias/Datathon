@@ -1,12 +1,15 @@
 # Link & Recommendation, Rice Datathon 2022
 ---
-By [Tianjian Sun](https://github.com/TianjianSun), [Yuhan Yang](https://github.com/yune-lilias), [Haijiao Lu](https://github.com/LHJ98) and [Yun Sun]().
+
+![](./imgs/logo.jpg)
+
+By [Tianjian Sun](https://github.com/TianjianSun), [Yuhan Yang](https://github.com/yune-lilias), [Haijiao Lu](https://github.com/LHJ98) and [Yun Sun](https://github.com/SophieSUN88).
 
 ---
 
 ## Project Description
 
-This repository is for the project of Rice Datathon 2022, and this track is offered by Bill.com. These days, graph is widely used to represent data with much inter-relation. But most of time it's impossible to get a graph show all the edges exists,  thus it's necessary to build a model learn from part of the graph with most edge missing, and let model predict whether an edge exist, which is a good choice in making recommendation system.
+This repository is for the project of Rice Datathon 2022, and this track is offered by Bill.com. These days, graph is widely used to represent data with much inter-relation. But most of time it's impossible to get a graph showing all the edges which exist, thus it's necessary to build a model learn from a part of the graph while most edges are missing, and let the model predicts existence of potential edges. This technique is a nature choice in making recommendation systems.
 
 ---
 
@@ -39,6 +42,7 @@ Given part of a undirected graph with node & edge information, on one hand our p
 
 ## Built With
 numpy & matplotlib: based vector calculation and plot function
-gensim: doc2vec model to vectorize nodes
+Qtdesigner: build GUI
+gensim: build doc2vec model to vectorize nodes
 pandas: load csv to our program
 pytorch-geometry: gnn related functions
