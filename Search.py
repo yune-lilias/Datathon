@@ -20,22 +20,19 @@ def interact(page, top_k):
 
         test_prediction = [1 if score > 0 else 0 for score in test_data_score]
         # print(test_prediction[:5])
-        return test_prediction
+        b = [str(j) for j in test_prediction]
+        str2 = ''.join(b)
+        return str2
     else:
         recommend_node, node_score = model.pred_one_edge(z, page, top_k)
         # print(recommend_node)
 
         # print(node_score)
-        return recommend_node
-
-def rEdge(Page):
-    test_data_nodes_score = interact()
-    return test_data_nodes_score
+        b = [str(j) for j in recommend_node]
+        str2 = ''.join(b)
+        return str2
 
 
-def rOne(z, Page1, Top_k):
-    recommend_node, node_score = search.model.pred_one_edge(z, Page1, Top_k)
-    return recommend_node, node_score
 
 
 
