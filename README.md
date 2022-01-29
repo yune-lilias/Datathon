@@ -26,19 +26,23 @@ Given part of a undirected graph with node & edge information, on one hand the g
 5. To make it easier to use, we also build a GUI with edge prediction and node recommendation (print k nodes with highest scores) based on user's input node ids and an integer k. Some necessary data is stored locally upon the first used.
 6. We also try the HTML web site to make the interface with another style which we can make improvement in the future.
 
+![](./imgs/model_structure.PNG)
+
 ---
 
 ## Challenges we met
 1. It's hard for us to build a gnn, which all of us have nearly no experience and knowledge about it.
-2. Running time is too high since model and score matrix is so large, make it slower to debug. Even with smaller dataset will takes quite a long time for pytorch to set up in pycharm or vscode. 
-3. After we choose to store some variable locally, the file size is also quite large. Which make it diffult to share with teammate because they exceed github file size limitation.
-4. Hard to find a way add regularization part to avoid overfitting
+2. Running time is too long since the model and score matrix is so large, making it slower to debug. Even with smaller dataset will it takes quite a long time for pytorch to set up in pycharm and vscode. 
+3. After we choose to store some variable locally, the file size is also quite large and it's difficult to share with teammate as it exceeds github file size limitation.
+4. It's hard to find a way to add regularization part to avoid overfitting.
 5. Not enough time to read essays and compared with different gnn models in pytorch
 
+---
+
 ## Accomplishments that we're proud of
-1. Our project can get high accuracy in validation and test(split from train) data, and we successfully finish the functionality finding k nodes have highest score with user input node number. 
-2. We build a nice gui for our project
-3. After the first search in gui, following search takes much less time (in 10s) 
+1. Our project can get a high accuracy in validation and test(split from train) data, and we successfully finish the functionality finding k nodes have highest score with user input node number. 
+2. We build a nice gui for our project.
+3. After the first search in gui, following search takes much less time (in 10s).
 
 ---
 
